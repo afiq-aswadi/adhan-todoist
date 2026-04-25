@@ -41,7 +41,10 @@ uv run --env-file .env main.py --city Istanbul --country Turkey
 uv run --env-file .env main.py --city "Kuala Lumpur" --country Malaysia --method 2
 ```
 
-Calculation methods are listed at https://aladhan.com/calculation-methods.
+`--city` / `--country` accept anything Aladhan can geocode — see the
+[`timingsByCity` endpoint](https://aladhan.com/prayer-times-api#GET-/timingsByCity)
+for details. Calculation methods are listed at
+https://aladhan.com/calculation-methods.
 Default is method 3 (Muslim World League). Pass `--project-id <id>` to file
 tasks under a specific Todoist project instead of the Inbox.
 
