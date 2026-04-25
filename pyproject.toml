@@ -1,0 +1,11 @@
+[project]
+name = "adhan-todoist"
+version = "0.1.0"
+description = "Daily Islamic prayer times pushed to Todoist as dated tasks."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+dependencies = [
+    "requests>=2.32",
+    "tyro>=0.8",
+]
