@@ -26,10 +26,17 @@ TODOIST_API_TOKEN=...
 
 ## Usage
 
-Run once per day (before Fajr) for the location you're in:
+By default, location is auto-detected from your public IP via
+[ipapi.co](https://ipapi.co/), so just running the script does the right thing
+wherever your laptop is:
 
 ```
-uv run --env-file .env main.py --city Melbourne --country Australia
+uv run --env-file .env main.py
+```
+
+To override (e.g. on a server, or behind a VPN that misreports location):
+
+```
 uv run --env-file .env main.py --city Berkeley --country "United States"
 uv run --env-file .env main.py --city Perth --country Australia --method 2
 ```
@@ -62,5 +69,6 @@ launchctl kickstart gui/$(id -u)/com.afiq.adhan-todoist
 
 Logs go to `launchd.log` / `launchd.err.log` in the repo root.
 
-Switching locations means editing the plist's `ProgramArguments` to add
-`--city` / `--country`, then reloading.
+Location follows your public IP automatically — fly to Berkeley and the next
+day's run picks up the new city. No plist edits required unless you want to
+hard-code an override.
