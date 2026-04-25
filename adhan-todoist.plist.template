@@ -3,17 +3,17 @@
 <plist version="1.0">
 <dict>
     <key>Label</key>
-    <string>com.afiq.adhan-todoist</string>
+    <string>local.adhan-todoist</string>
     <key>ProgramArguments</key>
     <array>
-        <string>/Users/afiqabdillah/.local/bin/uv</string>
+        <string>__UV__</string>
         <string>run</string>
         <string>--env-file</string>
         <string>.env</string>
         <string>main.py</string>
     </array>
     <key>WorkingDirectory</key>
-    <string>/Users/afiqabdillah/adhan-todoist</string>
+    <string>__REPO__</string>
     <key>StartCalendarInterval</key>
     <dict>
         <key>Hour</key>
@@ -22,8 +22,8 @@
         <integer>0</integer>
     </dict>
     <key>StandardOutPath</key>
-    <string>/Users/afiqabdillah/adhan-todoist/launchd.log</string>
+    <string>__REPO__/launchd.log</string>
     <key>StandardErrorPath</key>
-    <string>/Users/afiqabdillah/adhan-todoist/launchd.err.log</string>
+    <string>__REPO__/launchd.err.log</string>
 </dict>
 </plist>

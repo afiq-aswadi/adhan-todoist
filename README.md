@@ -47,28 +47,30 @@ tasks under a specific Todoist project instead of the Inbox.
 
 ## Scheduling (macOS launchd)
 
-The repo includes `com.afiq.adhan-todoist.plist` — edit the paths to match your
-machine, copy it into `~/Library/LaunchAgents/`, then load:
+`install.sh` substitutes your repo path and `uv` location into
+`adhan-todoist.plist.template` and loads the agent under the label
+`local.adhan-todoist`:
 
 ```
-launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.afiq.adhan-todoist.plist
+./install.sh
 ```
 
 It runs daily at 01:00 local time. If the laptop is asleep, the job fires on
-next wake. To unload (e.g. before editing the plist):
+next wake. Re-running `install.sh` reloads cleanly. To uninstall:
 
 ```
-launchctl bootout gui/$(id -u)/com.afiq.adhan-todoist
+launchctl bootout gui/$(id -u)/local.adhan-todoist
+rm ~/Library/LaunchAgents/local.adhan-todoist.plist
 ```
 
-To force a run now (will create a duplicate set of today's tasks):
+To force a run now (creates a duplicate set of today's tasks):
 
 ```
-launchctl kickstart gui/$(id -u)/com.afiq.adhan-todoist
+launchctl kickstart gui/$(id -u)/local.adhan-todoist
 ```
 
 Logs go to `launchd.log` / `launchd.err.log` in the repo root.
 
-Location follows your public IP automatically — fly to Berkeley and the next
-day's run picks up the new city. No plist edits required unless you want to
-hard-code an override.
+Location follows your public IP automatically — fly to a new city and the next
+day's run picks it up. Override via `--city` / `--country` in the plist
+template if you need to (e.g. behind a foreign-exit VPN).
