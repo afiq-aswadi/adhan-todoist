@@ -37,8 +37,8 @@ uv run --env-file .env main.py
 To override (e.g. on a server, or behind a VPN that misreports location):
 
 ```
-uv run --env-file .env main.py --city Berkeley --country "United States"
-uv run --env-file .env main.py --city Perth --country Australia --method 2
+uv run --env-file .env main.py --city Istanbul --country Turkey
+uv run --env-file .env main.py --city "Kuala Lumpur" --country Malaysia --method 2
 ```
 
 Calculation methods are listed at https://aladhan.com/calculation-methods.
