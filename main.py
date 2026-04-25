@@ -7,7 +7,7 @@ import requests
 import tyro
 
 ALADHAN_URL = "https://api.aladhan.com/v1/timingsByCity"
-TODOIST_URL = "https://api.todoist.com/rest/v2/tasks"
+TODOIST_URL = "https://api.todoist.com/api/v1/tasks"
 PRAYERS = ["Fajr", "Dhuhr", "Asr", "Maghrib", "Isha"]
 
 

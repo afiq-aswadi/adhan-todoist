@@ -11,10 +11,17 @@ Requires [`uv`](https://docs.astral.sh/uv/).
 uv sync
 ```
 
-Get a Todoist API token from Todoist Settings → Integrations → Developer, then:
+Get a Todoist API token from Todoist Settings → Integrations → Developer.
+Either export it in your shell:
 
 ```
 export TODOIST_API_TOKEN="..."
+```
+
+…or put it in a `.env` file at the repo root and pass `--env-file .env` to `uv run`:
+
+```
+TODOIST_API_TOKEN=...
 ```
 
 ## Usage
@@ -22,9 +29,9 @@ export TODOIST_API_TOKEN="..."
 Run once per day (before Fajr) for the location you're in:
 
 ```
-uv run main.py --city Melbourne --country Australia
-uv run main.py --city Berkeley --country "United States"
-uv run main.py --city Perth --country Australia --method 2
+uv run --env-file .env main.py --city Melbourne --country Australia
+uv run --env-file .env main.py --city Berkeley --country "United States"
+uv run --env-file .env main.py --city Perth --country Australia --method 2
 ```
 
 Calculation methods are listed at https://aladhan.com/calculation-methods.
