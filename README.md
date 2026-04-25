@@ -38,7 +38,29 @@ Calculation methods are listed at https://aladhan.com/calculation-methods.
 Default is method 3 (Muslim World League). Pass `--project-id <id>` to file
 tasks under a specific Todoist project instead of the Inbox.
 
-## Scheduling
+## Scheduling (macOS launchd)
 
-Either a local cron entry or a GitHub Actions schedule. Switching locations
-just means changing the `--city` / `--country` flags in your scheduler.
+The repo includes `com.afiq.adhan-todoist.plist` — edit the paths to match your
+machine, copy it into `~/Library/LaunchAgents/`, then load:
+
+```
+launchctl bootstrap gui/$(id -u) ~/Library/LaunchAgents/com.afiq.adhan-todoist.plist
+```
+
+It runs daily at 01:00 local time. If the laptop is asleep, the job fires on
+next wake. To unload (e.g. before editing the plist):
+
+```
+launchctl bootout gui/$(id -u)/com.afiq.adhan-todoist
+```
+
+To force a run now (will create a duplicate set of today's tasks):
+
+```
+launchctl kickstart gui/$(id -u)/com.afiq.adhan-todoist
+```
+
+Logs go to `launchd.log` / `launchd.err.log` in the repo root.
+
+Switching locations means editing the plist's `ProgramArguments` to add
+`--city` / `--country`, then reloading.
